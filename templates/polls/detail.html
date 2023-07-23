@@ -1,0 +1,52 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-grid.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-grid.min.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-reboot.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-reboot.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-reboot.min.css.map' %}">
+</head>
+<body>
+
+    <script src="{% static 'bootstrap.js' %}"></script>
+  <script src="{% static 'bootstrap.js.map' %}"></script>
+  <script src="{% static 'bootstrap.min.js.map' %}"></script>
+  <script src="{% static 'bootstrap.min.js' %}"></script>
+  <script src="{% static 'bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'bootstrap.bundle.js.map' %}"></script>
+  <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'bootstrap.bundle.min.js.map' %}"></script>
+
+    <div class="content">
+        <form action="{% url 'vote' question.id %}" method="post">
+            {% csrf_token %}
+
+            <h1>{{ question.question_text }}</h1>
+
+            {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+            
+            {% for choice in question.choice_set.all %}
+                <input type="radio" name="my_selection" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            {% endfor %}
+
+            <input type="submit" value="Vote">
+        </form>
+    </div>
+</body>
+</html>

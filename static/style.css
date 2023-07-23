@@ -1,0 +1,26 @@
+/* polls/style.css */
+
+/* Apply blue color to the h1 element */
+h1 {
+    color: blue;
+  }
+  
+  /* Apply red color to the labels */
+  label {
+    color: rgb(214, 158, 158);
+  }
+  
+  /* Apply green color to the body text */
+  body {
+    color: rgb(34, 2, 19);
+  }
+  
+  /* Style the form container */
+  .content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  

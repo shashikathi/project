@@ -1,0 +1,75 @@
+{% load static %}
+
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+       
+        .attraction-box {
+            width: 800px;
+            height: 400px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the content inside the box */
+        .attraction-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .attraction-description {
+            font-size: 16px;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-grid.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-grid.min.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-reboot.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-reboot.css.map' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-reboot.min.css.map' %}">
+</head>
+<body>
+
+
+    <script src="{% static 'bootstrap.js' %}"></script>
+  <script src="{% static 'bootstrap.js.map' %}"></script>
+  <script src="{% static 'bootstrap.min.js.map' %}"></script>
+  <script src="{% static 'bootstrap.min.js' %}"></script>
+  <script src="{% static 'bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'bootstrap.bundle.js.map' %}"></script>
+  <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'bootstrap.bundle.min.js.map' %}"></script>
+   <div class="attraction-box">
+    <div class="attraction-description">
+    {% if question_list %}
+        <ul>
+            {% for question in question_list %}
+                <li>
+                    <h2>
+                    <!-- <a href="/polls/{{question.id}}">{{question.question_text}}</a> -->
+                    <a href="{% url 'detail' question.id %}">{{question.question_text}}</a>
+                    </h2>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available as of now, maybe you can check again later.</p>
+    {% endif %}
+  </div>
+  </div>
+</body>
+</html>
